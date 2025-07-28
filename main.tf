@@ -56,13 +56,12 @@ module "blog_lb" {
   # Security Group
   security_groups = [module.blog_sg.security_group_id]
 
-  http_tpc_listeners = [
-    {
-      port               = 80
-      protocol           = "HTTP"
-      target_group_index = 0
+  listeners = {
+    ex-http-https-redirect = {
+      port     = 80
+      protocol = "HTTP"
     }
-  ]
+  }
 
   target_groups = [
     {
