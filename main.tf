@@ -69,11 +69,12 @@ module "blog_lb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-      targets = {
-        my_target = {
+      targets = [
+        {
           target_id = aws_instance.blog.id
+          port      = 80
         }
-      }
+      ]
     }
   ]
 
